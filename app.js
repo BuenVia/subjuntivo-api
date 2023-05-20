@@ -27,6 +27,7 @@ const subjuntivoRouter = require('./routes/subjuntivoRouter')
 app.get('/', subjuntivoRouter)
 app.get('/:slug', subjuntivoRouter)
 app.get('/admin/edit/:id', subjuntivoRouter)
+app.post('/admin/edit/:id', subjuntivoRouter)
 
 // Read
 app.get('/api/subjuntivo/read', subjuntivoRouter)

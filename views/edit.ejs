@@ -6,13 +6,17 @@
 
     <div>
 
-            <h1><%= article.title %></h1>
-            <p><%= article.auth %></p>
-            <p><%= article.createdAt %></p>
-            <textarea>
+        <a href="/" >Home</a>
+        <form action="/admin/edit/<%= article._id %>" method="post" class="edit__form">
+            <input type="text" name="title" value="<%= article.title %>" />
+            <input type="text" name="auth" value="<%= article.auth %>" />
+            <textarea name="sanitizedHtml">
                 <%- article.sanitizedHtml %>
             </textarea>
-            <a href="/" >Home</a>
+            <p><%= article.createdAt %></p>
+            <p><%= article._id %></p>
+            <button type="submit">EDIT</button>
+        </form>
 
     </div>
 

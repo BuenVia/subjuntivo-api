@@ -15,9 +15,18 @@ router.get('/:slug', async (req, res) => {
     res.render('read', { article: article })
 })
 
-router.get('/admin/edit/:id', async (req, res) => {
+router.route('/admin/edit/:id')
+.get( async (req, res) => {
     const article = await Subjuntivo.findOne({ _id: req.params.id })
     res.render('edit', { article: article })
+})
+.post(async (req, res) => {
+    try {
+        const subjuntivoPost = await Subjuntivo.updateOne({ _id: req.params.id }, { $set: req.body })
+        res.redirect('/?Success')
+    } catch (error) {
+        res.send(`There has been an error in UPDATE:\n\n${error}`)
+    }
 })
 
 
