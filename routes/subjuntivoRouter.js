@@ -5,9 +5,33 @@ const Subjuntivo = require('../models/subjuntivoSchema')
 
 // Home Route
 
-router.get('/', (req, res) => {
-    res.send('Hello world')
+router.get('/', async (req, res) => {
+    const subjuntivo = await Subjuntivo.find()
+    res.render('index', { subjuntivo: subjuntivo })
 })
+
+router.get('/:slug', async (req, res) => {
+    const article = await Subjuntivo.findOne({ slug: req.params.slug })
+    res.render('read', { article: article })
+})
+
+router.get('/admin/edit/:id', async (req, res) => {
+    const article = await Subjuntivo.findOne({ _id: req.params.id })
+    res.render('edit', { article: article })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Read Route 
 

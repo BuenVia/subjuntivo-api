@@ -1,0 +1,19 @@
+<%- include('./partials/header') %>
+
+    <div>
+        <h1>EDIT</h1>
+    </div>
+
+    <div>
+
+            <h1><%= article.title %></h1>
+            <p><%= article.auth %></p>
+            <p><%= article.createdAt %></p>
+            <textarea>
+                <%- article.sanitizedHtml %>
+            </textarea>
+            <a href="/" >Home</a>
+
+    </div>
+
+<%- include('./partials/footer') %>
